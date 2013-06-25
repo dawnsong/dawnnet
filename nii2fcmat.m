@@ -12,11 +12,8 @@ vd=vd';
 vm=spm_vol(fmsk);
 vmd=spm_read_vols(vm);
 vmdi=find(vmd~=0);
-msk=reshape(vmdi, [1 length(vmdi)]);
-msk=repmat(msk, [n4 1]);
 
-vd=vd(find(msk));
-vd=reshape(vd, [n4, length(vmdi)]);
+vd=vd(:,vmdi);
 
 %fcmat=zeros(length(vmdi));
 [fcmat,p]=corrcoef(vd);
