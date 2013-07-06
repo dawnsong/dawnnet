@@ -6,7 +6,7 @@ function threshFCmat(afcmat, athdprfx, ap)
 %
 eval(sprintf('load %s', afcmat));
 
-msk= p>=ap;
+msk= p<=ap;
 fcmat(~msk)=0;
 
 %positive
@@ -17,7 +17,7 @@ pfcmat(~pm)=0;
 [i,j,s]=find(pfcmat);
 [m,n]=size(pfcmat);
 sfcmat=sparse(i,j,s,m,n);
-fn=sprintf('%s.Pge%g.positive.mat',athdprfx,ap);
+fn=sprintf('%s.Ple%g.positive.mat',athdprfx,ap);
 save(fn, 'sfcmat')
 clear pfcmat pm sfcmat;
 
@@ -29,6 +29,6 @@ nfcmat(~nm)=0;
 [i,j,s]=find(nfcmat);
 [m,n]=size(nfcmat);
 sfcmat=sparse(i,j,s,m,n);
-fn=sprintf('%s.Pge%g.negative.mat',athdprfx,ap);
+fn=sprintf('%s.Ple%g.negative.mat',athdprfx,ap);
 save(fn, 'sfcmat')
 clear nfcmat nm sfcmat;
