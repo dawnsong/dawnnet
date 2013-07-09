@@ -26,7 +26,7 @@ cij(m)=1;
 dc=IPN_centDegree(cij);
 sc=IPN_centSubgraph(cij);
 ec=IPN_centEigenvector(cij);
-pc=IPN_centPagerand(cij,0.85);
+pc=IPN_centPagerank(cij,0.85);
 
 % for spm8
 %load mask and save results to nii
