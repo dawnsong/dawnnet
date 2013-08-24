@@ -34,6 +34,7 @@ Vi=spm_vol('$2');
 msk=spm_read_vols(Vi);
 midx=find(msk);
 
+Vi.fname='/dev/shm/x.nii';
 Vo=spm_create_vol(Vi);
 
 Vo.fname=sprintf('%s.dc.nii','`basename $1 .mat`');
