@@ -17,7 +17,7 @@ CALLDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 matlabg <<eof
 addpath(genpath('$CALLDIR'));
-threshFCmat('$1','$2',$3);
+threshFCmat('$1','$2',${3:-0.0001});
 eof
 
 

@@ -9,6 +9,14 @@ eval(sprintf('load %s', afcmat));
 msk= p<=ap;
 fcmat(~msk)=0;
 
+%both positive and negative
+[i,j,s]=find(fcmat);
+[m,n]=size(fcmat);
+sfcmat=sparse(i,j,s,m,n);
+fn=sprintf('%s.Ple%g.both.mat',athdprfx,ap);
+save(fn, 'sfcmat')
+clear sfcmat;
+
 %positive
 pfcmat=fcmat;
 pm= fcmat>0;
