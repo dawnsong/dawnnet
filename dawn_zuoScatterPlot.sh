@@ -27,7 +27,7 @@ set ytics format " "
 set terminal png
 set output "$png"
 
-binwidth=0.5
+binwidth=0.1
 bin(x,width)=width*floor(x/width)
 plot "$xd" using (bin(\$1, binwidth)):(1.0) smooth freq with boxes lc rgb "navy"
 eoh
