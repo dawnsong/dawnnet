@@ -3,6 +3,8 @@
 # 20130929
 # repeat Dr. Zuo's scatter plot and histogram of CC centrality
 
+test $# -eq 0 && exit
+
 ln -sf ../../inia19s-gm.msk.nii .
 
 nii2dump(){
