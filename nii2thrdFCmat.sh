@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# cent2z.sh  2013-09-23 10:04
+# nii2thrdFCmat.sh  2013-09-30 09:33
 # Copyright (C) 2013 Xiaowei Song <dawnwei.song@gmail.com>
 #
 # Distributed under terms of the MIT license.
@@ -20,14 +20,18 @@ while getopts h opt; do
     esac
 done
 shift `expr $OPTIND - 1`
-test $# -ge 1 || usage;
+test $# -eq 4 || usage;
 # TODO
 #{
 #
 #} 1>${progname}.log 2>${progname}.err
 
-cent=$1
+nii=$1
 msk=$2
-read mean sigma o < <(3dmaskave -sigma -mask $msk $cent)
-fcent=$(basename $cent)
-3dcalc -a $cent -b $msk -expr "(a-$mean)/$sigma * step(b)" -prefix $fcent -overwrite
+prfx=$3
+pthrd=$4
+
+nii2fcmat.sh $nii $msk
+fcmat="fcmat.$(basename $nii .nii)*.mat"
+threshFCmat.sh $fcmat $prfx $pthrd
+rm $fcmat
